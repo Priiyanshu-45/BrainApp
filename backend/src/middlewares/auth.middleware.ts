@@ -3,8 +3,12 @@ import jwt from "jsonwebtoken";
 import type { JwtPayload } from "jsonwebtoken";
 import { User } from "../db/db.js";
 import type { Types } from "mongoose";
+import dotenv from "dotenv";
 
-const JWT_SECRET = "abc123";
+dotenv.config();
+
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 async function authMiddleware(req: Request, res: Response, next: NextFunction) {
   try {
@@ -13,20 +17,20 @@ async function authMiddleware(req: Request, res: Response, next: NextFunction) {
       return res.status(400).json({ message: "Missing authorization Header." });
     const authToken = authHeaders.split(" ");
     if (authToken.length !== 2 || authToken[0] !== "Bearer")
-      return res
-        .status(400)
-        .json({ message: "Incorrect authorization Header." });
+      return res.status(400).json({ message: "Invalid authorization Header." });
     const token = authToken[1];
     if (!token) return res.status(400).json({ message: "Missing token." });
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET as string);
     if (typeof decoded === "string" || !("id" in decoded))
       return res.status(401).json({ message: "Invalid token." });
     const userId = (decoded as JwtPayload & { id: Types.ObjectId }).id;
     const user = await User.findById(userId);
     if (!user) return res.status(400).json({ message: "User does not found." });
-    req.user.id = userId;
+    req.user = {
+      id: userId,
+    };
     next();
-  } catch (err) { 
+  } catch (err) {
     if (err instanceof jwt.JsonWebTokenError) {
       return res.status(401).json({
         message: "Invalid token",

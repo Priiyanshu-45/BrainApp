@@ -4,7 +4,7 @@ import {
   updateContent,
   addContent,
   deleteContent,
-} from "../controller/content.js";
+} from "../controller/content.controller.js";
 import authMiddleware from "../middlewares/auth.middleware.js"
 
 const contentRouter = express.Router();
@@ -13,10 +13,10 @@ contentRouter.use(authMiddleware);
 
 contentRouter.get("/mybrain", allcontent);
 
-contentRouter.put("/updateContent/:id", updateContent);
+contentRouter.patch("/update/:id", updateContent);
 
-contentRouter.post("/addContent", addContent);
+contentRouter.post("/add", addContent);
 
-contentRouter.delete("/deleteContent/:id", deleteContent);
+contentRouter.delete("/delete/:id", deleteContent);
 
 export default contentRouter;
