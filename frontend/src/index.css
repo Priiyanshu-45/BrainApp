@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-prple-50:  #e0e7ff; /* Clean background tint */
+  --color-prple-100: #c7d2fe; /* Subtle border / hover tint */
+  --color-prple-200: #a5b4fc; /* Subtle active click */
+  --color-prple-500: #5046e4; /* Your signature vibrant base */
+  --color-prple-600: #4338ca; /* Deep hover */
+  --color-prple-700: #3730a3; /* Deeper active click */
+
+  --color-btn_txt1-100: #635dc4; /* Primary Button Text */
+  --color-btn_txt2-100: #faf7fe; /* Secondary Button Text */
+}
