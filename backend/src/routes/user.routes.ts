@@ -8,7 +8,7 @@ userRouter.post("/signup", signup);
 
 userRouter.post("/login", login);
 
-userRouter.use(authMiddleware);
+userRouter.use(authMiddleware);  
 
 userRouter.get("/me", profile);
 

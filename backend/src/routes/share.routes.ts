@@ -1,9 +1,14 @@
 import express from "express";
-import { share } from "../controller/shareableContent.js";
+import { share, receive } from "../controller/shareableContent.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
 
 const shareRouter = express.Router();
 
-shareRouter.get("/shareMybrain", share);
+shareRouter.use(authMiddleware);
+
+shareRouter.post("/shareMybrain", share);
+
+shareRouter.get("/shareMybrain/:hash", receive);
 
 
 export default shareRouter;

@@ -15,7 +15,7 @@ const authSchema = z.object({
     .max(12, { message: "Username cannot exceed 12 characters." }),
   password: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters long." })
+    .min(6, { message: "Password must be at least 6 characters long." })
     .max(16, { message: "Password cannot exceed 16 characters." })
     .regex(/[A-Z]/, "Must contain Uppercase Character.")
     .regex(/[a-z]/, "Must contain Lowercase Character.")

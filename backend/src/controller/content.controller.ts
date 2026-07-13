@@ -61,7 +61,7 @@ async function addContent(req: Request, res: Response) {
 }
 
 async function allcontent(req: Request, res: Response) {
-  try {
+  try { 
     const userId = req.user.id;
     const allNotes = await Content.find({ creator: userId }).select([
       "title",

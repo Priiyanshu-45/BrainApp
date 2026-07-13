@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { boolean } from "zod";
 
 const UserSchema = new Schema(
   {
@@ -12,6 +13,10 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       trim: true
+    },
+    is_share : {
+      type: boolean,
+      default: false
     }
   },
   {
@@ -71,7 +76,7 @@ const TagSchema = new Schema({
 });
 
 const LinkSchema = new Schema({
-  link: {
+  hash: {
     type : String,
     unique: true,
     trim: true,
@@ -89,5 +94,6 @@ const LinkSchema = new Schema({
 const User = model("User", UserSchema);
 const Content = model("Content", ContentSchema);
 const Tag = model("Tag", TagSchema);
+const Link = model("Link", LinkSchema);
 
-export { User, Content, Tag, contentType };
+export { User, Content, Tag, contentType, Link };

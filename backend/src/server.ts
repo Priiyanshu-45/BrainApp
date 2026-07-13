@@ -1,7 +1,7 @@
 import { connect } from "mongoose";
 import app from "./app.js";
 import dotenv from "dotenv";
-import { string } from "zod";
+
 
 dotenv.config();
 
