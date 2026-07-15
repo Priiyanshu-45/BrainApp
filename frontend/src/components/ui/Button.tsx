@@ -25,7 +25,7 @@ const sizeDesign: sizeStyles = {
     "lg": "px-6 py-3",
 }
 
-const defaultDesign = "rounded-lg m-1 flex gap-1 justify-center items-center cursor-pointer hover:scale-101 active:scale-99";
+const defaultDesign = "rounded-lg m-1 flex gap-1 justify-center items-center cursor-pointer hover:scale-101 active:scale-99 font-normal";
 
 export const Button = (props: ButtonProps) => {
     const style = `${variantDesign[props.variant]} ${sizeDesign[props.size]} ${defaultDesign}`;
