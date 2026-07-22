@@ -9,7 +9,7 @@ export const AuthPage = () => {
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-[radial-gradient(circle_at_top,#1a1730,#0a0a12)]">
-        <div className="z-10 border-3 bg-content-bg border-prple-200 hover:border-prple-500 shadow-md shadow-prple-500/70 w-screen md:w-72 p-2 rounded-md flex flex-col gap-2">
+        <div className="relative z-10 border-3 bg-content-bg border-prple-200 hover:border-prple-500 shadow-md shadow-prple-500/70 w-72 p-2 rounded-md flex flex-col gap-2">
           <div className="bg-gray-200 rounded-md flex justify-evenly items-center mb-2">
             <span
               className={`${authstate === "signup" ? "border-b-2 border-prple-500 " : ""}`}
